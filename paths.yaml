@@ -2,3 +2,12 @@
 # A többi file helye itt konfigurálható.
 
 events: ./config/events.yaml
+
+sounds:
+  in: ./sounds/in.mp3
+  out: ./sounds/out.mp3
+  chime: ./sounds/chime.mp3
+
+announcements:
+  new: ./announcements/new/
+  old: ./announcements/old/
