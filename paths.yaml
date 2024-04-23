@@ -1,4 +1,4 @@
 # Ennek a filenak a scripttel egy helyen kell lennie!
 # A többi file helye itt konfigurálható.
 
-events: ./config/events.yaml
+events: ~/shared/config/events.yaml
