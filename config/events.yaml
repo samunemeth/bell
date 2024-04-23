@@ -1,6 +1,8 @@
 # Ez a file tartalmazza a különböző események időpontjait.
 # Érdemes az eseményeket tanórák szerint tagolni.
 
+# ---- EZEN AZ ÁGON EZ A CONFIG FILE MÁSHOL TALÁLHATÓ MEG! ---
+
 # 1. óra
 
 - time: 08:00
