@@ -2,3 +2,12 @@
 # A többi file helye itt konfigurálható.
 
 events: ~/shared/config/events.yaml
+
+sounds:
+  in: ~/shared/sounds/in.mp3
+  out: ~/shared/sounds/out.mp3
+  chime: ~/shared/sounds/chime.mp3
+
+announcements:
+  new: ~/shared/announcements/new/
+  old: ~/shared/announcements/old/
