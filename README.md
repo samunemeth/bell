@@ -1,3 +1,5 @@
+## Ez az ág a Péterfy egyedi server konfigurációjára van szabva!
+
 ## Ez a project fejlesztés alatt áll!
 
 Egyenlőre nem játszik le hangokat, csak a log-ba jegyzi fel hogy megtörténet az esemény.
