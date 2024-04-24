@@ -1,13 +1,13 @@
 # Ennek a filenak a scripttel egy helyen kell lennie!
 # A többi file helye itt konfigurálható.
 
-events: ~/shared/config/events.yaml
+events: /home/bell/shared/config/events.yaml
 
 sounds:
-  in: ~/shared/sounds/in.mp3
-  out: ~/shared/sounds/out.mp3
-  chime: ~/shared/sounds/chime.mp3
+  in: /home/bell/shared/sounds/in.mp3
+  out: /home/bell/shared/sounds/out.mp3
+  chime: /home/bell/shared/sounds/chime.mp3
 
 announcements:
-  new: ~/shared/announcements/new/
-  old: ~/shared/announcements/old/
+  new: /home/bell/shared/announcements/new/
+  old: /home/bell/shared/announcements/old/
