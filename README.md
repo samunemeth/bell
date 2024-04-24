@@ -1,11 +1,12 @@
-## This project is in development, it does not function yet!
+## Ez a project fejlesztés alatt áll!
 
-As of the latest commit, this code only logs when an event is supposed to happen.
+Egyenlőre nem játszik le hangokat, csak a log-ba jegyzi fel hogy megtörténet az esemény.
 
-## Description
+## Leírás
 
-For playing school bell sound and announcements at specific times.
+Iskolai be- és kicsengő hangjainak pontos lejátszására. Továbbá hangosbemondások kicsengetés előtti bejátszására.
 
-## Repositories needed:
+## Szükséges könyvtárak
 
  - pyyaml
+ - schedule
