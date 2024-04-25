@@ -12,5 +12,3 @@ Iskolai be- és kicsengő hangjainak pontos lejátszására. Továbbá hangosbem
 
  - pyyaml
  - schedule
-
-## Automatic overnight 'git pull' test
