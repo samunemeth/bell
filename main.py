@@ -28,18 +28,18 @@ def run_event(event_type: str) -> None:
         case "becsengo":
             logging.info("Becsengő lejátszása...")
             try:
-                playsound.playsound(paths["sounds"]["in"])
+                playsound.playsound(paths["sounds-in"])
             except playsound.PlaysoundException:
-                logging.warning("Becsengő sikertelen! A \"" + str(paths["sounds"]["in"]) + "\" file nem található.")
+                logging.warning("Becsengő sikertelen! A \"" + str(paths["sounds-in"]) + "\" file nem található.")
             else:
                 logging.info("Becsengő lejátszva.")
 
         case "kicsengo":
             logging.info("Kicsengő lejátszása...")
             try:
-                playsound.playsound(paths["sounds"]["out"])
+                playsound.playsound(paths["sounds-out"])
             except playsound.PlaysoundException:
-                logging.warning("Kicsengő sikertelen! A \"" + str(paths["sounds"]["out"]) + "\" file nem található.")
+                logging.warning("Kicsengő sikertelen! A \"" + str(paths["sounds-out"]) + "\" file nem található.")
             else:
                 logging.info("Kicsengő lejátszva.")
 

@@ -3,11 +3,9 @@
 
 events: ./config/events.yaml
 
-sounds:
-  in: ./sounds/in.mp3
-  out: ./sounds/out.mp3
-  chime: ./sounds/chime.mp3
+sounds-in: ./sounds/in.mp3
+sounds-out: ./sounds/out.mp3
+sounds-chime: ./sounds/chime.mp3
 
-announcements:
-  new: ./announcements/new/
-  old: ./announcements/old/
+announcements-new: ./announcements/new/
+announcements-old: ./announcements/old/
