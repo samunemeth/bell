@@ -26,16 +26,25 @@ logging.info(f"Események: {events}")
 def run_event(event_type: str) -> None:
     match event_type:
         case "becsengo":
-            logging.info(f"Becsengő sikeresen futtatva.")
-            pass
+            logging.info(f"Becsengő lejátszása...")
+            try:
+                playsound.playsound(paths["sounds"]["in"])
+            except playsound.PlaysoundException:
+                logging.warning(f"Becsengő sikertelen! A \"{paths["sounds"]["in"]}\" file nem található.")
+            else:
+                logging.info(f"Becsengő lejátszva.")
 
         case "kicsengo":
-            logging.info(f"Kicsengő sikeresen futtatva.")
-            pass
+            logging.info(f"Kicsengő lejátszása...")
+            try:
+                playsound.playsound(paths["sounds"]["out"])
+            except playsound.PlaysoundException:
+                logging.warning(f"Kicsengő sikertelen! A \"{paths["sounds"]["out"]}\" file nem található.")
+            else:
+                logging.info(f"Kicsengő lejátszva.")
 
         case "hirdetes":
             logging.info(f"Hirdetés sikeresen futtatva.")
-            pass
 
         case _:
             logging.warning(f"A bemeneti file nem megfelelően van formázva!, \"{event_type}\" esemény nem létezik.")
