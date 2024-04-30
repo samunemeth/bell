@@ -2,46 +2,62 @@ import logging
 import yaml
 from time import sleep
 import schedule
+import playsound
+from os.path import exists as file_exists
 
 # A logger beállítása. Érdemes így hagyni. Ha túl sok az kimenet, a "level" változót lehet változtatni.
 logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level = logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
 
 # Logging
-logging.info(f"Konfigurációk betöltése...")
+logging.info("Konfigurációk betöltése...")
 
 # File helyek importálása. A paths.yaml file ezzel a scriptel egyhelyen kell hogy legyen!
 paths: dict[str] = []
 with open("paths.yaml") as paths_file:
     paths = yaml.safe_load(paths_file)
-logging.info(f"File helyek: {paths}")
+# Ellenőrzés hogy léteznek-e a megadott fileok illetve mappák.
+for path_name, path in paths.items():
+    if not file_exists(path):
+        logging.error("A \"" + str(path_name) + "\" kulcshoz megadott \"" + str(path) + "\" file vagy mappa nem létezik!")
+logging.debug("File helyek: " + str(paths))
 
 # Időpontok importálása egy könyvtárba.
 events: dict[str, str] = []
 with open(paths["events"]) as events_file:
     events = yaml.safe_load(events_file)
-logging.info(f"Események: {events}")
+logging.debug("Események: " + str(events))
 
 # Funkció a különböző típusú események felismerésére és a megfelelő feladat futtatására.
 def run_event(event_type: str) -> None:
     match event_type:
         case "becsengo":
-            logging.info(f"Becsengő sikeresen futtatva.")
-            pass
+            logging.info("Becsengő lejátszása...")
+            try:
+                # playsound.playsound(paths["sounds-in"])
+                pass
+            except playsound.PlaysoundException:
+                logging.warning("Becsengő sikertelen! A \"" + str(paths["sounds-in"]) + "\" file nem található.")
+            else:
+                logging.debug("Becsengő lejátszva.")
 
         case "kicsengo":
-            logging.info(f"Kicsengő sikeresen futtatva.")
-            pass
+            logging.info("Kicsengő lejátszása...")
+            try:
+                # playsound.playsound(paths["sounds-out"])
+                pass
+            except playsound.PlaysoundException:
+                logging.warning("Kicsengő sikertelen! A \"" + str(paths["sounds-out"]) + "\" file nem található.")
+            else:
+                logging.debug("Kicsengő lejátszva.")
 
         case "hirdetes":
-            logging.info(f"Hirdetés sikeresen futtatva.")
-            pass
+            logging.info("Hirdetés sikeresen futtatva.")
 
         case _:
-            logging.warning(f"A bemeneti file nem megfelelően van formázva!, \"{event_type}\" esemény nem létezik.")
+            logging.warning("A bemeneti file nem megfelelően van formázva!, \"" + str(event_type) + "\" esemény nem létezik.")
 
-# A konfigurációs fileban megadott események beisőzítése HÉTKÖZNAPOKRA.
-# Szombati munkanap? Iskola vége után?
-logging.info(f"Események időzítése...")
+# A konfigurációs fileban megadott események beidőzítése hétköznapokra.
+logging.info("Események időzítése...")
 for event in events:
     event_time = event["time"]
     event_type = event["type"]
@@ -52,10 +68,10 @@ for event in events:
     schedule.every().friday.at(event_time).do(run_event, event_type)
 
 # Logging
-logging.info(f"Inicializáció sikeres!")
+logging.info("Inicializáció sikeres!")
         
 # A beidőzített események végrehajtása.
-logging.info(f"Várakozás az eseményekre...")
+logging.info("Várakozás az eseményekre...")
 while True:
     schedule.run_pending()
     sleep(1)

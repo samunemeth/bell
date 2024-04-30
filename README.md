@@ -8,7 +8,28 @@ Egyenlőre nem játszik le hangokat, csak a log-ba jegyzi fel hogy megtörténet
 
 Iskolai be- és kicsengő hangjainak pontos lejátszására. Továbbá hangosbemondások kicsengetés előtti bejátszására.
 
-## Szükséges könyvtárak
+## Tennivalók
 
- - pyyaml
- - schedule
+- [ ] Konfigurációs fileok beolvasáskor való ellenőrzése.
+- [ ] Környezeti változó a logging-level -hez.
+- [ ] Playsound helyett ffplay.
+
+## Csomagok telepítése
+
+### Windows
+
+```sh
+python -m venv ./venv
+.\venv\Scripts\activate.bat
+pip3 install -r requirements.txt
+python3 main.py
+```
+
+### Linux
+
+```sh
+python -m venv ./venv
+./venv/bin/pip3 install -r requirements.txt
+```
+
+Ha így nem sikerül a telepítés, érdemese megprómálni a `requirements.txt` fileban szerereplő csomagokat egyeséve, **sorban** telepíteni a `pip3 install [name]` paranccsal.
