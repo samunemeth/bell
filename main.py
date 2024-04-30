@@ -3,6 +3,7 @@ import yaml
 from time import sleep
 import schedule
 import playsound
+from os.path import exists as file_exists
 
 # A logger beállítása. Érdemes így hagyni. Ha túl sok az kimenet, a "level" változót lehet változtatni.
 logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level = logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
@@ -14,13 +15,17 @@ logging.info("Konfigurációk betöltése...")
 paths: dict[str] = []
 with open("paths.yaml") as paths_file:
     paths = yaml.safe_load(paths_file)
-logging.info("File helyek: " + str(paths))
+# Ellenőrzés hogy léteznek-e a megadott fileok illetve mappák.
+for path_name, path in paths.items():
+    if not file_exists(path):
+        logging.error("A \"" + str(path_name) + "\" kulcshoz megadott \"" + str(path) + "\" file vagy mappa nem létezik!")
+logging.debug("File helyek: " + str(paths))
 
 # Időpontok importálása egy könyvtárba.
 events: dict[str, str] = []
 with open(paths["events"]) as events_file:
     events = yaml.safe_load(events_file)
-logging.info("Események: " + str(events))
+logging.debug("Események: " + str(events))
 
 # Funkció a különböző típusú események felismerésére és a megfelelő feladat futtatására.
 def run_event(event_type: str) -> None:
