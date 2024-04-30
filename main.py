@@ -6,7 +6,9 @@ import playsound
 
 # A logger beállítása. Érdemes így hagyni. Ha túl sok az kimenet, a "level" változót lehet változtatni.
 logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level = logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
-logging.info(f"Konfigurációk betöltése megkezdődött...")
+
+# Logging
+logging.info(f"Konfigurációk betöltése...")
 
 # File helyek importálása. A paths.yaml file ezzel a scriptel egyhelyen kell hogy legyen!
 paths: dict[str] = []
@@ -50,6 +52,7 @@ for event in events:
     schedule.every().thursday.at(event_time).do(run_event, event_type)
     schedule.every().friday.at(event_time).do(run_event, event_type)
 
+# Logging
 logging.info(f"Inicializáció sikeres!")
         
 # A beidőzített események végrehajtása.
