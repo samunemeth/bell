@@ -8,7 +8,7 @@ Iskolai be- és kicsengő hangjainak pontos lejátszására. Továbbá hangosbem
 
 ## Tennivalók
 
-- [] Konfigurációs fileok beolvasáskor való ellenőrzése.
+- [ ] Konfigurációs fileok beolvasáskor való ellenőrzése.
 
 ## Csomagok telepítése
 
