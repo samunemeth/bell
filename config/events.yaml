@@ -2,23 +2,3 @@
 # Érdemes az eseményeket tanórák szerint tagolni.
 
 # ---- EZEN AZ ÁGON EZ A CONFIG FILE MÁSHOL TALÁLHATÓ MEG! ---
-
-# 1. óra
-
-- time: "08:00"
-  type: "becsengo"
-- time: "08:42"
-  type: "hirdetes"
-- time: "08:45"
-  type: "kicsengo"
-
-# 2. óra
-
-- time: "08:55"
-  type: "becsengo"
-- time: "08:37"
-  type: "hirdetes"
-- time: "09:40"
-  type: "kicsengo"
-
-# stb.
