@@ -37,7 +37,7 @@ def run_event(event_type: str) -> None:
             except playsound.PlaysoundException:
                 logging.warning("Becsengő sikertelen! A \"" + str(paths["sounds-in"]) + "\" file nem található.")
             else:
-                logging.info("Becsengő lejátszva.")
+                logging.debug("Becsengő lejátszva.")
 
         case "kicsengo":
             logging.info("Kicsengő lejátszása...")
@@ -46,7 +46,7 @@ def run_event(event_type: str) -> None:
             except playsound.PlaysoundException:
                 logging.warning("Kicsengő sikertelen! A \"" + str(paths["sounds-out"]) + "\" file nem található.")
             else:
-                logging.info("Kicsengő lejátszva.")
+                logging.debug("Kicsengő lejátszva.")
 
         case "hirdetes":
             logging.info("Hirdetés sikeresen futtatva.")
@@ -54,7 +54,7 @@ def run_event(event_type: str) -> None:
         case _:
             logging.warning("A bemeneti file nem megfelelően van formázva!, \"" + str(event_type) + "\" esemény nem létezik.")
 
-# A konfigurációs fileban megadott események beisőzítése hétköznapokra.
+# A konfigurációs fileban megadott események beidőzítése hétköznapokra.
 logging.info("Események időzítése...")
 for event in events:
     event_time = event["time"]
