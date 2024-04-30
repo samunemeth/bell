@@ -10,6 +10,7 @@ Iskolai be- és kicsengő hangjainak pontos lejátszására. Továbbá hangosbem
 
 - [ ] Konfigurációs fileok beolvasáskor való ellenőrzése.
 - [ ] Környezeti változó a logging-level -hez.
+- [ ] Playsound helyett ffplay.
 
 ## Csomagok telepítése
 
