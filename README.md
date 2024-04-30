@@ -6,6 +6,10 @@ Egyenlőre nem játszik le hangokat, csak a log-ba jegyzi fel hogy megtörténet
 
 Iskolai be- és kicsengő hangjainak pontos lejátszására. Továbbá hangosbemondások kicsengetés előtti bejátszására.
 
+## Tennivalók
+
+- [] Konfigurációs fileok beolvasáskor való ellenőrzése.
+
 ## Csomagok telepítése
 
 ### Windows
