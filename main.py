@@ -17,7 +17,7 @@ logging.info("Konfigurációk betöltése...")
 
 # File helyek importálása. A paths.yaml file ezzel a scriptel egyhelyen kell hogy legyen!
 paths: dict[str] = []
-with open("paths.yaml") as paths_file:
+with open("/home/bell/bell-script/paths.yaml") as paths_file:
     paths = yaml.safe_load(paths_file)
 
 # Ellenőrzés hogy léteznek-e a megadott fileok illetve mappák.
