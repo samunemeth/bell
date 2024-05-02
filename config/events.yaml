@@ -1,0 +1,83 @@
+# Ez a file tartalmazza a különböző események időpontjait.
+# Érdemes az eseményeket tanórák szerint tagolni.
+
+# 1. óra
+
+- time: "08:00"
+  type: "becsengo"
+# - time: "08:42"
+#   type: "hirdetes"
+- time: "08:45"
+  type: "kicsengo"
+
+# 2. óra
+
+- time: "08:55"
+  type: "becsengo"
+- time: "08:37"
+  type: hirdetes
+- time: "09:40"
+  type: "kicsengo"
+
+# 3. óra
+
+- time: "09:55"
+  type: "becsengo"
+# - time: "10:37"
+#   type: hirdetes
+- time: "10:40"
+  type: "kicsengo"
+
+# 4. óra
+
+- time: "10:50"
+  type: "becsengo"
+# - time: "11:32"
+#   type: hirdetes
+- time: "11:35"
+  type: "kicsengo"
+
+# 5. óra
+
+- time: "11:45"
+  type: "becsengo"
+# - time: "12:27"
+#   type: hirdetes
+- time: "12:30"
+  type: "kicsengo"
+
+# 6. óra
+
+- time: "12:40"
+  type: "becsengo"
+# - time: "13:22"
+#   type: hirdetes
+- time: "13:25"
+  type: "kicsengo"
+
+# 7. óra
+
+- time: "13:35"
+  type: "becsengo"
+# - time: "14:17"
+#   type: hirdetes
+- time: "14:20"
+  type: "kicsengo"
+
+# 8. óra
+
+- time: "14:40"
+  type: "becsengo"
+# - time: "15:22"
+#   type: hirdetes
+- time: "15:25"
+  type: "kicsengo"
+
+# 9. óra
+
+- time: "15:25"
+  type: "becsengo"
+# - time: "16:07"
+#   type: hirdetes
+- time: "16:10"
+  type: "kicsengo"
