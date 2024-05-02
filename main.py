@@ -6,6 +6,7 @@ import playsound
 from os.path import exists as file_exists
 import re
 
+# Konstansok
 POSSIBLE_EVENTS = ["becsengo", "kicsengo", "hirdetes"]
 
 # A logger beállítása. Érdemes így hagyni. Ha túl sok az kimenet, a "level" változót lehet változtatni.
