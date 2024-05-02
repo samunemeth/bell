@@ -4,6 +4,9 @@ from time import sleep
 import schedule
 import playsound
 from os.path import exists as file_exists
+import re
+
+POSSIBLE_EVENTS = ["becsengo", "kicsengo", "hirdetes"]
 
 # A logger beállítása. Érdemes így hagyni. Ha túl sok az kimenet, a "level" változót lehet változtatni.
 logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level = logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
@@ -26,6 +29,13 @@ logging.debug("File helyek: %s", paths)
 events: dict[str, str] = []
 with open(paths["events"]) as events_file:
     events = yaml.safe_load(events_file)
+
+# Az időpontok és eseménytípusok ellenőrzése.
+for event in events:
+    if not re.match(r"[0-2]\d:[0-5]\d", event["time"]):
+        logging.error("A '%s' eseményhez megadott '%s' időpont formázása helytelen. Helyes formátum: HH:MM", event["type"], event["time"])
+    if event["type"] not in POSSIBLE_EVENTS:
+        logging.error("A '%s' időponthoz rendelt '%s' esemény nem létezik! Lehetséges opciók: '%s'", event["time"], event["type"], POSSIBLE_EVENTS)
 logging.debug("Események: %s", events)
 
 # Funkció a különböző típusú események felismerésére és a megfelelő feladat futtatására.
@@ -37,7 +47,7 @@ def run_event(event_type: str) -> None:
                 # playsound.playsound(paths["sounds-in"])
                 pass
             except playsound.PlaysoundException:
-                logging.warning("Becsengő sikertelen! A '%s' file nem található.", paths["sounds-in"])
+                logging.warning("Becsengő sikertelen!")
             else:
                 logging.debug("Becsengő lejátszva.")
 
@@ -47,7 +57,7 @@ def run_event(event_type: str) -> None:
                 # playsound.playsound(paths["sounds-out"])
                 pass
             except playsound.PlaysoundException:
-                logging.warning("Kicsengő sikertelen! A '%s' file nem található.", paths["sounds-out"])
+                logging.warning("Kicsengő sikertelen!")
             else:
                 logging.debug("Kicsengő lejátszva.")
 
@@ -60,13 +70,11 @@ def run_event(event_type: str) -> None:
 # A konfigurációs fileban megadott események beidőzítése hétköznapokra.
 logging.info("Események időzítése...")
 for event in events:
-    event_time = event["time"]
-    event_type = event["type"]
-    schedule.every().monday.at(event_time).do(run_event, event_type)
-    schedule.every().tuesday.at(event_time).do(run_event, event_type)
-    schedule.every().wednesday.at(event_time).do(run_event, event_type)
-    schedule.every().thursday.at(event_time).do(run_event, event_type)
-    schedule.every().friday.at(event_time).do(run_event, event_type)
+    schedule.every().monday.at(event["time"]).do(run_event, event["type"])
+    schedule.every().tuesday.at(event["time"]).do(run_event, event["type"])
+    schedule.every().wednesday.at(event["time"]).do(run_event, event["type"])
+    schedule.every().thursday.at(event["time"]).do(run_event, event["type"])
+    schedule.every().friday.at(event["time"]).do(run_event, event["type"])
 
 # Logging
 logging.info("Inicializáció sikeres!")
