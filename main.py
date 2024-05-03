@@ -2,7 +2,6 @@ import logging
 import yaml
 from time import sleep
 import schedule
-import playsound
 from os.path import exists as file_exists
 import re
 
