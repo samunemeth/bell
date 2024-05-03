@@ -13,16 +13,18 @@ POSSIBLE_EVENTS = ["becsengo", "kicsengo", "hirdetes"]
 
 # Környezeti változók betöltése
 load_dotenv()
+RUNNING_PATH = os.environ.get("RUNNING_PATH", default="./")
+LOGGING_LEVEL = int(os.environ.get("LOGGING_LEVEL", default="20"))
 
 # A logger beállítása. Érdemes így hagyni. Ha túl sok az kimenet, a "level" változót lehet változtatni.
-logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level = int(os.environ["LOGGING_LEVEL"]), datefmt='%Y-%m-%d %H:%M:%S')
+logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level = LOGGING_LEVEL, datefmt='%Y-%m-%d %H:%M:%S')
 
 # Logging
 logging.info("Konfigurációk betöltése...")
 
 # File helyek importálása. A paths.yaml file ezzel a scriptel egyhelyen kell hogy legyen!
 paths: dict[str] = []
-with open(os.environ["RUNNING_PATH"] + "paths.yaml") as paths_file:
+with open(RUNNING_PATH + "paths.yaml") as paths_file:
     paths = yaml.safe_load(paths_file)
 
 # Ellenőrzés hogy léteznek-e a megadott fileok illetve mappák.
