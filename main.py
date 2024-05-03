@@ -44,9 +44,8 @@ def run_event(event_type: str) -> None:
         case "becsengo":
             logging.info("Becsengő lejátszása...")
             try:
-                # playsound.playsound(paths["sounds-in"])
                 pass
-            except playsound.PlaysoundException:
+            except Exception:
                 logging.warning("Becsengő sikertelen!")
             else:
                 logging.debug("Becsengő lejátszva.")
@@ -54,9 +53,8 @@ def run_event(event_type: str) -> None:
         case "kicsengo":
             logging.info("Kicsengő lejátszása...")
             try:
-                # playsound.playsound(paths["sounds-out"])
                 pass
-            except playsound.PlaysoundException:
+            except Exception :
                 logging.warning("Kicsengő sikertelen!")
             else:
                 logging.debug("Kicsengő lejátszva.")
