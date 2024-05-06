@@ -2,6 +2,7 @@ import os
 import logging
 from time import sleep
 import re
+import subprocess
 
 # Külső könyvtárak
 import yaml
@@ -52,7 +53,7 @@ def run_event(event_type: str) -> None:
         case "becsengo":
             logging.info("Becsengő lejátszása...")
             try:
-                pass
+                subprocess.run("ffplay -v 0 -nodisp -autoexit " + paths["sounds-in"])
             except Exception:
                 logging.warning("Becsengő sikertelen!")
             else:
@@ -61,7 +62,7 @@ def run_event(event_type: str) -> None:
         case "kicsengo":
             logging.info("Kicsengő lejátszása...")
             try:
-                pass
+                subprocess.run("ffplay -v 0 -nodisp -autoexit " + paths["sounds-out"])
             except Exception :
                 logging.warning("Kicsengő sikertelen!")
             else:
