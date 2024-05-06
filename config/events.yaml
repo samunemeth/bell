@@ -66,18 +66,18 @@
 
 # 8. óra
 
-- time: "14:40"
-  type: "becsengo"
+# - time: "14:40"
+#   type: "becsengo"
 # - time: "15:22"
 #   type: hirdetes
-- time: "15:25"
-  type: "kicsengo"
+# - time: "15:25"
+#   type: "kicsengo"
 
 # 9. óra
 
-- time: "15:25"
-  type: "becsengo"
+# - time: "15:25"
+#   type: "becsengo"
 # - time: "16:07"
 #   type: hirdetes
-- time: "16:10"
-  type: "kicsengo"
+# - time: "16:10"
+#   type: "kicsengo"
