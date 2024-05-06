@@ -11,12 +11,16 @@ Iskolai be- és kicsengő hangjainak pontos lejátszására. Továbbá hangosbem
 ## Tennivalók
 
 - [x] Konfigurációs fileok beolvasáskor való ellenőrzése.
-- [ ] Környezeti változó a logging-level -hez.
-- [ ] Playsound helyett ffplay.
+- [x] Környezeti változó a logging-level -hez.
+- [ ] A hangosbemondások implementálása
+- [ ] ffplay a hangok lejátszásához.
+- [ ] Élő hangátvitel.
 
 ## Csomagok telepítése
 
 ### Windows
+
+Windowson az ffmpeg-et külön kell telepíteni.
 
 ```sh
 python -m venv ./venv
@@ -28,6 +32,7 @@ python3 main.py
 ### Linux
 
 ```sh
+sudo apt install ffmpeg
 python -m venv ./venv
 ./venv/bin/pip3 install -r requirements.txt
 ```
