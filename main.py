@@ -47,7 +47,7 @@ for event in events:
         logging.error("A '%s' időponthoz rendelt '%s' esemény nem létezik! Lehetséges opciók: '%s'", event["time"], event["type"], POSSIBLE_EVENTS)
 logging.debug("Események: %s", events)
 
-subprocess.run("ffplay -v 0 -nodisp -autoexit " + paths["sounds-in"])
+subprocess.run("ffplay -v 0 -nodisp -autoexit " + paths["sounds-in"], shell=True)
 
 # Funkció a különböző típusú események felismerésére és a megfelelő feladat futtatására.
 def run_event(event_type: str) -> None:
@@ -55,7 +55,7 @@ def run_event(event_type: str) -> None:
         case "becsengo":
             logging.info("Becsengő lejátszása...")
             try:
-                subprocess.run("ffplay -v 0 -nodisp -autoexit " + paths["sounds-in"])
+                subprocess.run("ffplay -v 0 -nodisp -autoexit " + paths["sounds-in"], shell=True)
             except Exception:
                 logging.warning("Becsengő sikertelen!")
             else:
@@ -64,7 +64,7 @@ def run_event(event_type: str) -> None:
         case "kicsengo":
             logging.info("Kicsengő lejátszása...")
             try:
-                subprocess.run("ffplay -v 0 -nodisp -autoexit " + paths["sounds-out"])
+                subprocess.run("ffplay -v 0 -nodisp -autoexit " + paths["sounds-out"], shell=True)
             except Exception :
                 logging.warning("Kicsengő sikertelen!")
             else:
