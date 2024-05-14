@@ -58,6 +58,7 @@ def run_event(event_type: str) -> None:
                 logging.warning("Becsengő sikertelen!")
             else:
                 logging.debug("Becsengő lejátszva.")
+            return
 
         case "kicsengo":
             logging.info("Kicsengő lejátszása...")
@@ -67,12 +68,29 @@ def run_event(event_type: str) -> None:
                 logging.warning("Kicsengő sikertelen!")
             else:
                 logging.debug("Kicsengő lejátszva.")
+            return
 
         case "hirdetes":
-            logging.info("Hirdetés sikeresen futtatva.")
+            logging.error("Fejlesztés alatt!")
+            return
+
+            logging.debug("Hirdetés keresése...")
+            possible_files = os.listdir(paths["announcements-new"])
+            possible_announcements = [e for e in possible_files if re.match(r".*\.mp3", e)]
+            if not possible_announcements:
+                logging.info("Nincs hirdetés!")
+                return
+            announcement_name = possible_announcements[0]
+            # TODO: Play chime before announcement
+            logging.info("A '%s' nevű hirdetés lejátszása...", announcement_name)
+            subprocess.run("ffplay -v 0 -nodisp -autoexit " + paths["announcements-new"] + announcement_name)
+            os.rename(paths["announcements-new"] + announcement_name, paths["announcements-old"] + announcement_name)
+            logging.debug("Hirdetés lejátszva.")
+            return
 
         case _:
             logging.warning("A bemeneti file nem megfelelően van formázva!, '%s' esemény nem létezik.", event_type)
+            return
 
 # A konfigurációs fileban megadott események beidőzítése hétköznapokra.
 logging.info("Események időzítése...")
