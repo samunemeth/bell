@@ -32,10 +32,8 @@ python3 main.py
 
 ### Linux
 
-<!-- Include python and pip in the install command? -->
-
 ```sh
-sudo apt install ffmpeg 
+sudo apt install ffmpeg python3-full
 python -m venv ./venv
 ./venv/bin/pip3 install -r requirements.txt
 ```
