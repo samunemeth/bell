@@ -1,7 +1,7 @@
 # Ennek a filenak a scripttel egy helyen kell lennie!
 # A többi file helye itt konfigurálható.
 
-events: "/home/bell/bell-script/config/silent.yaml"
+events: "/home/bell/bell-script/config/events.yaml"
 
 sounds-in: "/home/bell/shared/sounds/in.mp3"
 sounds-out: "/home/bell/shared/sounds/out.mp3"
