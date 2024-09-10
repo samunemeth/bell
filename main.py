@@ -10,7 +10,7 @@ import schedule
 from dotenv import load_dotenv
 
 # Konstansok
-POSSIBLE_EVENTS = ["becsengo", "kicsengo", "hirdetes"]
+POSSIBLE_EVENTS = ["becsengo", "kicsengo", "hirdetes", "podcast"]
 FFPLAY_COMMAND = "ffplay -v 0 -nodisp -autoexit"
 
 # Környezeti változók betöltése
@@ -95,6 +95,32 @@ def run_event(event_type: str) -> None:
             os.rename(ANNOUNCEMENT_STARING_PATH, ANNOUNCEMENT_ENGIND_PATH)
 
             logging.debug("Hirdetés lejátszva.")
+            return
+
+        case "podcast":
+
+            # TODO: .wav és egyéb audióformátumik elfogadása és kezelése
+            # AZ új hirdetések mappájának ellenőrzése
+            logging.debug("Hirdetés keresése...")
+            possible_files = os.listdir(PATHS["podcasts-new"])
+            possible_announcements = [e for e in possible_files if re.match(r".*\.mp3", e)]
+            if not possible_announcements:
+                logging.info("Nincs podcast!")
+                return
+            
+            # Filenév illetve helyek előkésztése
+            TIMESTAMP = str(round(time.time() * 1000))
+            ANNOUNCEMENT_NAME = possible_announcements[0][:-4]
+            ANNOUNCEMENT_STARING_PATH = PATHS["podcasts-new"] + ANNOUNCEMENT_NAME + ".mp3"
+            ANNOUNCEMENT_ENGIND_PATH = PATHS["podcasts-old"] + ANNOUNCEMENT_NAME + "-" + TIMESTAMP + ".mp3"
+
+            # Dallam és hirdetés lejátszása
+            logging.info("A '%s' nevű podcast lejátszása...", ANNOUNCEMENT_NAME)
+            subprocess.run(FFPLAY_COMMAND + " " + PATHS["sounds-chime"])
+            subprocess.run(FFPLAY_COMMAND + " " + ANNOUNCEMENT_STARING_PATH)
+            os.rename(ANNOUNCEMENT_STARING_PATH, ANNOUNCEMENT_ENGIND_PATH)
+
+            logging.debug("Podcast lejátszva.")
             return
 
         case _:

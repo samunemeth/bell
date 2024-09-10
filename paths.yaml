@@ -7,5 +7,13 @@ sounds-in: "/home/bell/shared/sounds/in.mp3"
 sounds-out: "/home/bell/shared/sounds/out.mp3"
 sounds-chime: "/home/bell/shared/sounds/chime.mp3"
 
+<<<<<<< HEAD
 announcements-new: "/home/bell/shared/announcements/new/"
 announcements-old: "/home/bell/shared/announcements/old/"
+=======
+announcements-new: "./announcements/new/"
+announcements-old: "./announcements/old/"
+
+podcasts-new: "./podcasts/new/"
+podcasts-old: "./podcasts/old/"
+>>>>>>> main
