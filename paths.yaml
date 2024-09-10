@@ -9,3 +9,6 @@ sounds-chime: "./sounds/chime.mp3"
 
 announcements-new: "./announcements/new/"
 announcements-old: "./announcements/old/"
+
+podcasts-new: "./podcasts/new/"
+podcasts-old: "./podcasts/old/"
