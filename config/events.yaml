@@ -15,9 +15,11 @@
 - time: "08:55"
   type: "becsengo"
 - time: "09:37"
-  type: hirdetes
+  type: "hirdetes"
 - time: "09:40"
   type: "kicsengo"
+- time: "09:42"
+  type: "podcast"
 
 # 3. óra
 
