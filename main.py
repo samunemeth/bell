@@ -90,8 +90,8 @@ def run_event(event_type: str) -> None:
 
             # Dallam és hirdetés lejátszása
             logging.info("A '%s' nevű hirdetés lejátszása...", ANNOUNCEMENT_NAME)
-            subprocess.run(FFPLAY_COMMAND + " " + PATHS["sounds-chime"])
-            subprocess.run(FFPLAY_COMMAND + " " + ANNOUNCEMENT_STARING_PATH)
+            subprocess.run(FFPLAY_COMMAND + " " + PATHS["sounds-chime"], shell=True)
+            subprocess.run(FFPLAY_COMMAND + " " + ANNOUNCEMENT_STARING_PATH, shell=True)
             os.rename(ANNOUNCEMENT_STARING_PATH, ANNOUNCEMENT_ENGIND_PATH)
 
             logging.debug("Hirdetés lejátszva.")
@@ -116,8 +116,8 @@ def run_event(event_type: str) -> None:
 
             # Dallam és hirdetés lejátszása
             logging.info("A '%s' nevű podcast lejátszása...", ANNOUNCEMENT_NAME)
-            subprocess.run(FFPLAY_COMMAND + " " + PATHS["sounds-chime"])
-            subprocess.run(FFPLAY_COMMAND + " " + ANNOUNCEMENT_STARING_PATH)
+            subprocess.run(FFPLAY_COMMAND + " " + PATHS["sounds-chime"], shell=True)
+            subprocess.run(FFPLAY_COMMAND + " " + ANNOUNCEMENT_STARING_PATH, shell=True)
             os.rename(ANNOUNCEMENT_STARING_PATH, ANNOUNCEMENT_ENGIND_PATH)
 
             logging.debug("Podcast lejátszva.")
