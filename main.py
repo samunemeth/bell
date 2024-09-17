@@ -24,12 +24,12 @@ logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level = LO
 # Logging
 logging.info("Konfigurációk betöltése...")
 
-# File helyek importálása. A paths.yaml file ezzel a scriptel egyhelyen kell hogy legyen!
+# File helyek importálása. A paths.yaml file ezzel a script-tel egyhelyen kell hogy legyen!
 PATHS: dict[str] = []
 with open(RUNNING_PATH + "paths.yaml") as paths_file:
     PATHS = yaml.safe_load(paths_file)
 
-# Ellenőrzés hogy léteznek-e a megadott fileok illetve mappák.
+# Ellenőrzés hogy léteznek-e a megadott fájlok illetve mappák.
 for path_name, path in PATHS.items():
     if not os.path.exists(path):
         logging.error("A '%s' kulcshoz megadott '%s' file vagy mappa nem létezik!", path_name, path)
@@ -73,7 +73,7 @@ def run_event(event_type: str) -> None:
 
         case "hirdetes":
 
-            # TODO: .wav és egyéb audióformátumik elfogadása és kezelése
+            # TODO: .wav és egyéb audio formátumok elfogadása és kezelése
             # AZ új hirdetések mappájának ellenőrzése
             logging.debug("Hirdetés keresése...")
             possible_files = os.listdir(PATHS["announcements-new"])
@@ -82,7 +82,7 @@ def run_event(event_type: str) -> None:
                 logging.info("Nincs hirdetés!")
                 return
             
-            # Filenév illetve helyek előkésztése
+            # Fájlnév illetve helyek előkészítése
             TIMESTAMP = str(round(time.time() * 1000))
             ANNOUNCEMENT_NAME = possible_announcements[0][:-4]
             ANNOUNCEMENT_STARING_PATH = PATHS["announcements-new"] + ANNOUNCEMENT_NAME + ".mp3"
@@ -99,7 +99,7 @@ def run_event(event_type: str) -> None:
 
         case "podcast":
 
-            # TODO: .wav és egyéb audióformátumik elfogadása és kezelése
+            # TODO: .wav és egyéb audio formátumok elfogadása és kezelése
             # AZ új hirdetések mappájának ellenőrzése
             logging.debug("Hirdetés keresése...")
             possible_files = os.listdir(PATHS["podcasts-new"])
@@ -108,7 +108,7 @@ def run_event(event_type: str) -> None:
                 logging.info("Nincs podcast!")
                 return
             
-            # Filenév illetve helyek előkésztése
+            # Fájlnév illetve helyek előkészítése
             TIMESTAMP = str(round(time.time() * 1000))
             ANNOUNCEMENT_NAME = possible_announcements[0][:-4]
             ANNOUNCEMENT_STARING_PATH = PATHS["podcasts-new"] + ANNOUNCEMENT_NAME + ".mp3"
@@ -127,7 +127,7 @@ def run_event(event_type: str) -> None:
             logging.warning("A bemeneti file nem megfelelően van formázva!, '%s' esemény nem létezik.", event_type)
             return
 
-# A konfigurációs fileban megadott események beidőzítése hétköznapokra.
+# A konfigurációs fájlban megadott események beidőzítése hétköznapokra.
 logging.info("Események időzítése...")
 for event in EVENTS:
     schedule.every().monday.at(event["time"]).do(run_event, event["type"])
