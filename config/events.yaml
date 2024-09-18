@@ -1,6 +1,11 @@
 # Ez a file tartalmazza a különböző események időpontjait.
 # Érdemes az eseményeket tanórák szerint tagolni.
 
+# 0. óra
+
+- time: "07:45"
+  type: "podcast"
+
 # 1. óra
 
 - time: "08:00"
@@ -18,8 +23,6 @@
   type: "hirdetes"
 - time: "09:40"
   type: "kicsengo"
-- time: "09:45"
-  type: "podcast"
 
 # 3. óra
 
