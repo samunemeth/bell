@@ -17,7 +17,6 @@ A `.yaml` fileok szintaxisa [itt](https://spacelift.io/blog/yaml) jól össze va
 ## Tennivalók
 
 - [ ] `.wav` hangformátum elfogadása
-- [ ] Élő hangátvitel.
 
 ## Csomagok telepítése
 
